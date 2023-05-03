@@ -1,0 +1,4 @@
+// ignores file or folder from being pushed to github
+
+node_modeules/
+.env

@@ -1,5 +1,6 @@
 const prisma = require("../db")
 
+
 const findUser = async (username) => {
     const user = await prisma.user.findUnique({
         where: {

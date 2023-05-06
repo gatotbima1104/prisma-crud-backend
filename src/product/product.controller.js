@@ -4,6 +4,7 @@
 const express = require('express');
 const router = express.Router()
 
+
 // const prisma = require('../db');
 const { getAllProducts, getProductById, createProduct, deleteProductById, updateProductById, getUsername } = require('./product.service');
 

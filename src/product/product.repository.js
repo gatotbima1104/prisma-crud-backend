@@ -1,14 +1,14 @@
 const prisma = require("../db")
 
 
-const findUser = async (username) => {
-    const user = await prisma.user.findUnique({
-        where: {
-            username,
-        }
-    })
-    return user
-}
+// const findUser = async (username) => {
+//     const user = await prisma.user.findUnique({
+//         where: {
+//             username,
+//         }
+//     })
+//     return user
+// }
 
 const findProduct = async () => {
     const product = prisma.product.findMany();
@@ -66,5 +66,5 @@ module.exports = {
     insertProduct,
     removeProductById,
     edtiProductById,
-    findUser
+    // findUser
 }

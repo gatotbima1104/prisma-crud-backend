@@ -71,5 +71,5 @@ module.exports = {
     insertProduct,
     removeProductById,
     edtiProductById,
-    createUser
+    // createUser
 }

@@ -14,12 +14,15 @@ const { getAllProducts, getProductById, createProduct, deleteProductById, update
 // simpen data user
 router.post("/register", async (req, res) =>{
     // ambil nilai username, password dari body
-    const user = await getUsername();
+    const { username, password } = req.body;
+    const user = await getUsername(username, password);
+
+    res.send(user)
 })
 
-router.post("/login", (req, res) => {
+// router.post("/login", (req, res) => {
 
-})
+// })
 
 router.get("/", async (req, res) => {
     const products = await getAllProducts();

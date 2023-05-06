@@ -1,19 +1,19 @@
 const prisma = require("../db")
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 
-const createUser = async (email, password) => {
-    const hashedPassword = await bcrypt.hash(password, 10);
+// const createUser = async (email, password) => {
+//     const hashedPassword = await bcrypt.hash(password, 10);
   
-    const user = await prisma.user.create({
-      data: {
-        email,
-        password: hashedPassword,
-      },
-    });
+//     const user = await prisma.user.create({
+//       data: {
+//         email,
+//         password: hashedPassword,
+//       },
+//     });
   
-    return user;
-  };
+//     return user;
+//   };
 
 const findProduct = async () => {
     const product = prisma.product.findMany();

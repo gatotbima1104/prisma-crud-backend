@@ -2,7 +2,26 @@
 // dipisah agar tenggung jawabnya terisolate dan fungsionalnya reusable
 
 // const prisma = require("../db");
-const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById } = require("./product.repository");
+const prisma = require("../db");
+const bcrypt = require("bcrypt");
+const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById, findUser  } = require("./product.repository");
+
+const getUsername = async (username) => {
+    const userRegister = await prisma.findUser(username);
+
+    if(userRegister){
+        res.status(400).send("username sudah terdaftar")
+    }
+
+    const hashPassword = bcrypt.hashSync(password, 10);
+
+    await prisma.user.create({
+        username,
+        password: hashPassword,
+    })
+
+    res.status(201).send("user berhasil dibuat")
+}   
 
 const getAllProducts = async () => {
     const product = await findProduct();
@@ -46,5 +65,6 @@ module.exports = {
     createProduct,
     deleteProductById,
     updateProductById,
+    getUsername
     
 }

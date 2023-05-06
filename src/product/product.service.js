@@ -3,8 +3,9 @@
 
 // const prisma = require("../db");
 const prisma = require("../db");
-import * as bcrypt from 'bcrypt';
-const bcrypt = require("bcrypt");
+// import * as bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
+// const bcrypt = require("bcrypt");
 // import { bcrypt } from bcryptjs;
 const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById, findUser  } = require("./product.repository");
 

@@ -4,6 +4,7 @@
 // const prisma = require("../db");
 const prisma = require("../db");
 const bcrypt = require("bcrypt");
+// import { bcrypt } from bcryptjs;
 const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById, findUser  } = require("./product.repository");
 
 const getUsername = async (username) => {
@@ -14,6 +15,7 @@ const getUsername = async (username) => {
     }
 
     const hashPassword = bcrypt.hashSync(password, 10);
+    // const passwordHash = bcrypt.hashSync(password, 10)
 
     await prisma.user.create({
         username,

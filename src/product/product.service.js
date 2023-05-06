@@ -3,27 +3,29 @@
 
 // const prisma = require("../db");
 const prisma = require("../db");
-// const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+const bcrypt = require("bcrypt");
 // import { bcrypt } from bcryptjs;
-const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById  } = require("./product.repository");
+const { findProduct, findProductById, insertProduct, removeProductById, edtiProductById, findUser  } = require("./product.repository");
 
-// const getUsername = async (username) => {
-//     const userRegister = await prisma.findUser(username);
+const getUsername = async (username) => {
+    const userRegister = await findUser(username);
 
-//     if(userRegister){
-//         res.status(400).send("username sudah terdaftar")
-//     }
+    if(userRegister){
+        res.status(400).send("username sudah terdaftar")
+    }
+    
 
-//     const hashPassword = bcrypt.hashSync(password, 10);
-//     // const passwordHash = bcrypt.hashSync(password, 10)
+    const hashPassword = bcrypt.hashSync(password, 10);
+    // const passwordHash = bcrypt.hashSync(password, 10)
 
-//     await prisma.user.create({
-//         username,
-//         password: hashPassword,
-//     })
+    await prisma.user.create({
+        username,
+        password: hashPassword,
+    })
 
-//     res.status(201).send("user berhasil dibuat")
-// }   
+    res.status(201).send("user berhasil dibuat")
+}   
 
 const getAllProducts = async () => {
     const product = await findProduct();
@@ -67,6 +69,6 @@ module.exports = {
     createProduct,
     deleteProductById,
     updateProductById,
-    // getUsername
+    getUsername
     
 }

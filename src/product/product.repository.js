@@ -8,6 +8,8 @@ const findUser = async (username) => {
         }
     })
     return user
+
+    prisma.user
 }
 
 const findProduct = async () => {

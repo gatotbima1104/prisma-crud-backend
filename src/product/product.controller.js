@@ -4,7 +4,8 @@ const express = require('express');
 const router = express.Router()
 
 // const prisma = require('../db');
-const { getAllProducts, getProductById, createProduct, deleteProductById, updateProductById, getUsername } = require('./product.service');
+const { getAllProducts, getProductById, createProduct, deleteProductById, updateProductById, } = require('./product.service');
+const {createUser} = require('./product.repository');
 
 // terima request 
 // check username dan password
@@ -12,8 +13,8 @@ const { getAllProducts, getProductById, createProduct, deleteProductById, update
 // simpen data user
 router.post("/register", async (req, res) =>{
     // ambil nilai username, password dari body
-    const { username, password } = req.body;
-    const user = await getUsername(username, password);
+    const { email, password } = req.body;
+    const user = await createUser(email, password);
 
     res.send(user)
 })

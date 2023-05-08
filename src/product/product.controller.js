@@ -10,42 +10,42 @@ const { getAllevents, geteventById, createevent, deleteeventById, updateeventByI
 // check username dan password
 // hash pasword user
 // simpen data user
-// router.post('/register', async (req, res) => {
-//     const {name, password} = req.body;
-//     const userRegister = await insertUser(name, password);
+router.post('/register', async (req, res) => {
+    const {name, password} = req.body;
+    const userRegister = await insertUser(name, password);
     
-//     return(userRegister)
-// })
+    return(userRegister)
+})
 
-// router.post('/login', async (req, res) => {
-//     const {name, password} = req.body;
-//     try {
-//         const findUser = await prisma.user.findFirst({
-//             where: {
-//                 name,
-//             }
-//         })
+app.post('/login', async (req, res) => {
+    const {name, password} = req.body;
+    try {
+        const findUser = await prisma.user.findFirst({
+            where: {
+                name,
+            }
+        })
 
-//         if(!findUser){
-//             res.send("user not found")
-//         }
+        if(!findUser){
+            res.send("user not found")
+        }
     
-//         const isValidPassword = bcrypt.compareSync(password, findUser.password)
+        const isValidPassword = bcrypt.compareSync(password, findUser.password)
     
-//         if(!isValidPassword){
-//             res.send("password salah")
-//         }
+        if(!isValidPassword){
+            res.send("password salah")
+        }
         
-//         res.send({
-//             message: "login success",
-//             data: findUser
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         res.send(error)
-//     }
+        res.send({
+            message: "login success",
+            data: findUser
+        })
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
 
-// })
+})
 
 
 router.get("/", async (req, res) => {

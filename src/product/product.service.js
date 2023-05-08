@@ -1,6 +1,11 @@
 // handle bisnis logic
 // dipisah agar tenggung jawabnya terisolate dan fungsionalnya reusable
 
+// const prisma = require("../db");
+// const prisma = require("../db");
+// import * as bcrypt from 'bcrypt';
+// const bcrypt = require("bcrypt");
+// import { bcrypt } from bcryptjs;
 const { findevent, findeventById, insertevent, removeeventById, edtieventById, createUser  } = require("./event.repository");
 
 // const getUsername = async (username) => {

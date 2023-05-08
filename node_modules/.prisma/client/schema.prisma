@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
+model Event {
   id          Int     @id @default(autoincrement())
   title       String
   description String
@@ -18,11 +18,10 @@ model Product {
   image       String
 }
 
+
 // model User {
-//   id        Int      @id @default(autoincrement())
-//   email     String   @unique
-//   password  String
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   product Product[]
 // }
-
-
-

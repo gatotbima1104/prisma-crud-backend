@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
+model Event {
   id          Int     @id @default(autoincrement())
   title       String
   description String

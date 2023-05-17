@@ -11,17 +11,15 @@ datasource db {
 }
 
 model Event {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   title       String
   description String
   price       Int
   image       String
 }
 
-
-// model User {
-//   id    Int     @id @default(autoincrement())
-//   email String  @unique
-//   name  String?
-//   product Product[]
-// }
+model User {
+  id Int @id @default(autoincrement())
+  name String @unique
+  password String
+}

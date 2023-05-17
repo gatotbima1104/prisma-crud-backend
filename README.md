@@ -3,17 +3,23 @@
 # Base URL
 https://prisma-gatot-bekend.up.railway.app/
 
-# Get all products
-/product
+# Get all events
+/event
 
-# Get product by Id
-/product/:Id
+# Get event by Id
+/event/:Id
 
-# Put product by Id
-/product/:Id
+# Put event by Id
+/event/:Id
 
-# Patch product by Id 
-/product/:Id
+# Patch event by Id 
+/event/:Id
 
-# Delete product by Id
-/product/:Id
+# Delete event by Id
+/event/:Id
+
+# register dashboard
+/register
+
+# Login dasboard 
+/login

@@ -1,81 +1,50 @@
 // handle bisnis logic
 // dipisah agar tenggung jawabnya terisolate dan fungsionalnya reusable
 
-// const prisma = require("../db");
-// const prisma = require("../db");
-// import * as bcrypt from 'bcrypt';
 // const bcrypt = require("bcrypt");
-// import { bcrypt } from bcryptjs;
-const { findevent, findeventById, insertevent, removeeventById, edtieventById, createUser  } = require("./event.repository");
+const { findEvent, findEventById, insertEvent, removeEventById, editEventById } = require("./event.repository");
 
-// const getUsername = async (username) => {
-//     const userRegister = await findUser(username);
-
-//     if(userRegister){
-//         res.status(400).send("username sudah terdaftar")
-//     }
-    
-
-//     const hashPassword = bcrypt.hashSync(password, 10);
-//     // const passwordHash = bcrypt.hashSync(password, 10)
-
-//     await prisma.user.create({
-//         username,
-//         password: hashPassword,
-//     })
-
-//     res.status(201).send("user berhasil dibuat")
-// }   
-
-const insertUser = async (name, password) => {
-    const user = await createUser(name, password);
-
-    // .. tambah logic disini
-    return user 
-}
-
-const getAllevents = async () => {
-    const event= await findevent();
+const catchEvents = async () => {
+    const event= await findEvent();
 
     // .. tambah logic disini
     return event
 };
 
-const geteventById = async (id) => {
+const getEventById = async (id) => {
 
-    const event= await findeventById(id)
+    const event= await findEventById(id)
 
     if(!event){
-       throw Error("eventnot found")
+       throw Error("event not found")
     }
 
     return event
 }
 
-const createevent= async (neweventData) =>{
-    const event= await insertevent(neweventData)
+const createEvent= async (neweventData) =>{
+    const event= await insertEvent(neweventData)
     return event;
 }
 
-const deleteeventById = async (id) => {
-    await geteventById(id) // reusable from getProducById
-    await removeeventById(id)
+const deleteEventById = async (id) => {
+    await getEventById(id) // reusable from getProducById
+    await removeEventById(id)
 }
 
-const updateeventById = async (id, eventData) => {
-    await geteventById(id) // reusable from getProducById
-    const event= edtieventById(id, eventData) //reusable from edtieventById
+const updateEventById = async (id, eventData) => {
+    await getEventById(id) // reusable from getProducById
+    const event= editEventById(id, eventData) //reusable from edtieventById
 
     return event
 }
 
 
 module.exports = {
-    getAllevents,
-    geteventById,
-    createevent,
-    deleteeventById,
-    updateeventById,
-    insertUser
+    catchEvents,
+    getEventById,
+    createEvent,
+    deleteEventById,
+    updateEventById,
     
 }

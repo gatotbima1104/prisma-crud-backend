@@ -1,36 +1,11 @@
 const prisma = require("../db")
 
-const createUser = async (name, password) => {
-    const findUser = await prisma.user.findFirst({
-        where: {
-            name,
-        }
-    })
-
-    if(findUser){
-        res.send("username has been taken")
-    }
-
-    const hashedPassword = bcrypt.hashSync(password, 10)
-
-    await prisma.user.create({
-       data: {
-        name,
-        password: hashedPassword
-       },
-       
-    })
-    prisma
-
-    res.send('user created')
-}
-
-const findevent= async () => {
-    const event= prisma.event.findMany();
+const findEvent = async () => {
+    const event = await prisma.event.findMany();
     return event
 }
 
-const findeventById = async (id) => {
+const findEventById = async (id) => {
     const event= await prisma.event.findUnique({
         where: {
             id,
@@ -40,19 +15,19 @@ const findeventById = async (id) => {
 
 }
 
-const insertevent= async (neweventData) => {
+const insertEvent= async (newEventData) => {
     const event= await prisma.event.create({
     data: {
-        title: neweventData.title,
-        description: neweventData.description,
-        price: neweventData.price,
-        image: neweventData.image,            
+        title: newEventData.title,
+        description: newEventData.description,
+        price: newEventData.price,
+        image: newEventData.image,            
         }
     })
     return event
 }
 
-const removeeventById = async (id) => {
+const removeEventById = async (id) => {
     const event= await prisma.event.delete({
         where: {
             id,
@@ -60,7 +35,7 @@ const removeeventById = async (id) => {
     })
 }
 
-const edtieventById = async (id, eventData) => {
+const editEventById = async (id, eventData) => {
     const event= await prisma.event.update({
         where: {
             id,
@@ -77,10 +52,9 @@ const edtieventById = async (id, eventData) => {
 
 
 module.exports = {
-    findevent,
-    findeventById,
-    insertevent,
-    removeeventById,
-    edtieventById,
-    createUser
+    findEvent,
+    findEventById,
+    insertEvent,
+    removeEventById,
+    editEventById,
 }

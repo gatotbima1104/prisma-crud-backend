@@ -16,6 +16,7 @@ model Event {
   description String
   price       Int
   image       String
+  date        String
 }
 
 model User {

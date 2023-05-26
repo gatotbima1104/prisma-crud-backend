@@ -21,7 +21,8 @@ const insertEvent= async (newEventData) => {
         title: newEventData.title,
         description: newEventData.description,
         price: newEventData.price,
-        image: newEventData.image,            
+        image: newEventData.image,  
+        date: newEventData.date,          
         }
     })
     return event

@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 // const bcrypt = require("bcrypt");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 // const prisma = require('../db');
 const {
@@ -50,11 +50,11 @@ router.get("/dashboard", async (req, res) => {
   try {
     const user = await getCurrentUser(req.session.userId);
 
-    res.render("dashboard", { user })
+    res.render("dashboard", { user });
   } catch (error) {
     res.redirect("/login");
   }
-})
+});
 
 router.get("/", async (req, res) => {
   const events = await catchEvents();
